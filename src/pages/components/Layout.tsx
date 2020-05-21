@@ -148,10 +148,10 @@ const Layout: React.FunctionComponent<Props> = function ({ children, title = 'De
             text-size-adjust: 100%;
           }
           body.webp {
-            background: url(${require('public/img/background.jpg')}) no-repeat center top;
+            background: #000 url(${require('public/img/background.jpg?webp')}) no-repeat center top;
           }
           body.no-webp {
-            background: url(${require('public/img/background.jpg')}) no-repeat center top;
+            background: #000 url(${require('public/img/background.jpg')}) no-repeat center top;
           }
           a {
             display: inline-block;
