@@ -1,5 +1,5 @@
-import Layout from './components/Layout';
 import Link from 'next/link';
+import Layout from './components/Layout';
 
 const IndexPage = () => (
   <Layout title="Rob Graeber | Official Website">
@@ -8,7 +8,7 @@ const IndexPage = () => (
         <picture>
           <source srcSet={require('public/img/profile.png?webp')} type="image/webp" />
           <source srcSet={require('public/img/profile.png')} type="image/jpeg" />
-          <img src={require('public/img/profile.png')} />
+          <img src={require('public/img/profile.png')} alt="" />
         </picture>
       </span>
       <h1>Rob Graeber</h1>
@@ -23,11 +23,13 @@ const IndexPage = () => (
       </Link>
     </div>
 
-    <style jsx>{`
-      h2 {
-        margin-top: 0.15em;
-      }
-    `}</style>
+    <style jsx>
+      {`
+        h2 {
+          margin-top: 0.15em;
+        }
+      `}
+    </style>
   </Layout>
 );
 

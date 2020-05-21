@@ -15,22 +15,45 @@
     "reset-css": "^5.0.1"
   },
   "devDependencies": {
+    "@types/eslint": "^6.8.1",
     "@types/imagemin-gifsicle": "^5.2.0",
     "@types/imagemin-mozjpeg": "^8.0.0",
     "@types/imagemin-pngquant": "^7.0.0",
     "@types/node": "^12.12.21",
+    "@types/prettier": "^2.0.0",
     "@types/react": "^16.9.16",
     "@types/react-dom": "^16.9.4",
+    "@typescript-eslint/eslint-plugin": "^2.34.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-typescript": "^7.2.1",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.20.0",
+    "eslint-plugin-react-hooks": "^2.5.1",
+    "husky": "^4.2.5",
     "imagemin-gifsicle": "^7.0.0",
     "imagemin-mozjpeg": "^8.0.0",
     "imagemin-pngquant": "^8.0.0",
+    "lint-staged": "^10.2.4",
     "next-optimized-images": "^2.6.0",
+    "prettier": "^2.0.5",
     "typescript": "3.7.3",
     "webp-loader": "^0.6.0"
   },
-  "license": "ISC",
   "prettier": {
     "singleQuote": true,
     "printWidth": 100
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,ts}": [
+      "eslint --fix --ignore-pattern '!*'",
+      "prettier --write"
+    ],
+    "*.{scss,md}": "prettier --write"
   }
 }

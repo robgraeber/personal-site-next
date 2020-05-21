@@ -1,0 +1,53 @@
+{
+  "extends": [
+    "airbnb-typescript",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking"
+  ],
+  "env": { "browser": true, "es6": true, "node": true },
+  "ignorePatterns": ["public", "node_modules/"],
+  "globals": { "Atomics": "readonly", "SharedArrayBuffer": "readonly" },
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": { "ecmaVersion": 2017, "sourceType": "module", "project": "./tsconfig.json" },
+  "plugins": ["@typescript-eslint"],
+  "rules": {
+    "import/order": [
+      "error",
+      { "groups": ["builtin", "external", "internal", "parent", "sibling", "index"] }
+    ],
+    "import/extensions": "off",
+    "import/prefer-default-export": "off",
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": true,
+        "optionalDependencies": true,
+        "peerDependencies": true
+      }
+    ],
+    "global-require": "off",
+    "comma-dangle": "off",
+    "func-names": "off",
+    "no-use-before-define": "off",
+    "no-plusplus": "off",
+    "no-new": "off",
+    "no-unused-vars": "off",
+    "implicit-arrow-linebreak": "off",
+    "function-paren-newline": "off",
+    "no-console": "off",
+    "newline-after-var": "error",
+    "capitalized-comments": "error",
+    "operator-linebreak": "off",
+    "object-curly-newline": "off",
+    "no-underscore-dangle": "off",
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-var-requires": "off",
+    "@typescript-eslint/ban-ts-ignore": "off",
+    "react/jsx-one-expression-per-line": "off",
+    "react/react-in-jsx-scope": "off",
+    "react/prop-types": "off",
+    "jsx-a11y/anchor-is-valid": "off"
+  }
+}

@@ -1,5 +1,5 @@
-import Layout from './components/Layout';
 import { useState } from 'react';
+import Layout from './components/Layout';
 
 const ContactPage = () => {
   const [statusText, setStatusText] = useState('');
@@ -21,10 +21,8 @@ const ContactPage = () => {
         message: messageInput,
       }),
     })
-      .then(function (rsp) {
-        return Promise.all([rsp.status, rsp.json()]);
-      })
-      .then(function ([status, body]) {
+      .then((rsp) => Promise.all([rsp.status, rsp.json()]))
+      .then(([status, body]) => {
         if (status === 200) {
           [setNameInput, setEmailInput, setSubjectInput, setMessageInput].forEach((setInput) =>
             setInput('')
@@ -35,7 +33,7 @@ const ContactPage = () => {
           throw new Error('Failed Request');
         }
       })
-      .catch(function () {
+      .catch(() => {
         setStatusText('An error occurred!');
       });
   }
@@ -79,7 +77,7 @@ const ContactPage = () => {
             onChange={(e) => setMessageInput(e.target.value)}
             rows={10}
             required
-          ></textarea>
+          />
           <div>
             <button className="ctaBtn" type="submit">
               Submit
@@ -89,19 +87,21 @@ const ContactPage = () => {
         </form>
       </div>
 
-      <style jsx>{`
-        h2 {
-          margin-bottom: 0.6em;
-        }
-        .description {
-          font-size: 1.12em;
-          margin-bottom: 1.4em;
-        }
-        .statusText {
-          font-size: 1.1em;
-          margin-left: 0.9em;
-        }
-      `}</style>
+      <style jsx>
+        {`
+          h2 {
+            margin-bottom: 0.6em;
+          }
+          .description {
+            font-size: 1.12em;
+            margin-bottom: 1.4em;
+          }
+          .statusText {
+            font-size: 1.1em;
+            margin-left: 0.9em;
+          }
+        `}
+      </style>
     </Layout>
   );
 };

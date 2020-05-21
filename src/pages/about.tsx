@@ -12,8 +12,9 @@ const AboutPage = () => (
         franchises, Rob Graeber’s games have received <b>over 500 million plays</b> and received
         countless awards. Developing games since a very young age, Rob Graeber incorporated{' '}
         <a href="http://www.effinggames.com">Effing Games</a> in 2011. Rob Graeber has developed
-        over 12 original titles, <b>grossing over $300k</b> while still in college. Ultimately, Rob
-        Graeber was awarded a Bachelors of Science; Environmental Economics from{' '}
+        over 12 original titles,
+        <b>grossing over $300k</b> while still in college. Ultimately, Rob Graeber was awarded a
+        Bachelors of Science; Environmental Economics from{' '}
         <a href="https://en.wikipedia.org/wiki/University_of_California,_Berkeley">UC Berkeley</a>{' '}
         in 2012.
       </p>
@@ -34,11 +35,13 @@ const AboutPage = () => (
       </p>
     </div>
 
-    <style jsx>{`
-      .pageImage {
-        margin-right: 2.2em;
-      }
-    `}</style>
+    <style jsx>
+      {`
+        .pageImage {
+          margin-right: 2.2em;
+        }
+      `}
+    </style>
   </Layout>
 );
 
