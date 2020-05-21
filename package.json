@@ -4,7 +4,7 @@
   "scripts": {
     "dev": "NODE_OPTIONS='--inspect' next",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p $PORT",
     "test": "tsc"
   },
   "dependencies": {
@@ -15,10 +15,18 @@
     "reset-css": "^5.0.1"
   },
   "devDependencies": {
+    "@types/imagemin-gifsicle": "^5.2.0",
+    "@types/imagemin-mozjpeg": "^8.0.0",
+    "@types/imagemin-pngquant": "^7.0.0",
     "@types/node": "^12.12.21",
     "@types/react": "^16.9.16",
     "@types/react-dom": "^16.9.4",
-    "typescript": "3.7.3"
+    "imagemin-gifsicle": "^7.0.0",
+    "imagemin-mozjpeg": "^8.0.0",
+    "imagemin-pngquant": "^8.0.0",
+    "next-optimized-images": "^2.6.0",
+    "typescript": "3.7.3",
+    "webp-loader": "^0.6.0"
   },
   "license": "ISC",
   "prettier": {

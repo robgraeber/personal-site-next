@@ -17,12 +17,23 @@ const Layout: React.FunctionComponent<Props> = function ({ children, title = 'De
         <title>{title}</title>
         <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico" />
         <link
           href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700"
           rel="stylesheet"
           type="text/css"
         />
-        <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              var i = new Image();
+              i.onload = i.onerror = function () {
+                document.body.classList.add(i.height == 1 ? 'webp' : 'no-webp');
+              };
+              i.src = 'data:image/webp;base64,UklGRhoAAABXRUJQVlA4TA0AAAAvAAAAEAcQERGIiP4HAA==';
+            `,
+          }}
+        ></script>
       </Head>
       <div id="header">
         <div className="container">
@@ -122,7 +133,6 @@ const Layout: React.FunctionComponent<Props> = function ({ children, title = 'De
           height: 100%;
         }
         body {
-          background: url('/img/background.jpg') no-repeat center top;
           background-color: #000;
           font-family: roboto, arial, sans-serif;
           font-size: 12px;
@@ -132,6 +142,12 @@ const Layout: React.FunctionComponent<Props> = function ({ children, title = 'De
           position: relative;
           text-align: center;
           text-size-adjust: 100%;
+        }
+        body.webp {
+          background: url(${require('public/img/background.jpg?webp')}) no-repeat center top;
+        }
+        body.no-webp {
+          background: url(${require('public/img/background.jpg')}) no-repeat center top;
         }
         a {
           display: inline-block;

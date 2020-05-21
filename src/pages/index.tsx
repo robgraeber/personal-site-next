@@ -5,7 +5,11 @@ const IndexPage = () => (
   <Layout title="Rob Graeber | Official Website">
     <div className="contents">
       <span className="pageImage">
-        <img src="/img/profile.png" alt="Profile Image" />
+        <picture>
+          <source srcSet={require('public/img/profile.png?webp')} type="image/webp" />
+          <source srcSet={require('public/img/profile.png')} type="image/jpeg" />
+          <img src={require('public/img/profile.png')} />
+        </picture>
       </span>
       <h1>Rob Graeber</h1>
       <h2>

@@ -1,3 +1,8 @@
+/**
+ * Global _app.tsx file which manages all the global imports
+ */
+
+// Imports css to reset all elements to standardized styles.
 import '../../node_modules/reset-css/reset.css';
 
 interface AppParams {

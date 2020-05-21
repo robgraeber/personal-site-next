@@ -6,6 +6,10 @@
     "noImplicitReturns": true,
     "noImplicitThis": true,
     "esModuleInterop": true,
+    "target": "es5",
+    "allowJs": true,
+    "skipLibCheck": true,
+    "isolatedModules": true,
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
@@ -13,30 +17,14 @@
     "noFallthroughCasesInSwitch": true,
     "jsx": "preserve",
     "strict": true,
-    "lib": [
-      "ES2017",
-      "dom"
-    ],
+    "lib": ["ES2017", "dom"],
     "baseUrl": ".",
-    "typeRoots": [
-      "./node_modules/@types",
-      "./types"
-    ],
+    "typeRoots": ["./node_modules/@types", "./types"],
     "paths": {
-      "src/*": [
-        "src/*"
-      ]
-    },
-    "target": "es5",
-    "allowJs": true,
-    "skipLibCheck": true,
-    "isolatedModules": true
+      "src/*": ["src/*"],
+      "public/*": ["public/*"]
+    }
   },
-  "exclude": [
-    "node_modules"
-  ],
-  "include": [
-    "**/*.ts",
-    "**/*.tsx"
-  ]
+  "exclude": ["node_modules"],
+  "include": ["**/*.ts", "**/*.tsx"]
 }
