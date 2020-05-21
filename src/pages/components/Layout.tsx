@@ -4,39 +4,24 @@ import Head from 'next/head';
 
 type Props = {
   title?: string;
+  description?: string;
 };
 
 function getCurrentYear(): number {
   return new Date().getFullYear();
 }
 
-const Layout: React.FunctionComponent<Props> = function ({ children, title = 'Default title' }) {
+const Layout: React.FunctionComponent<Props> = function ({ children, title, description }) {
   return (
     <>
       <Head>
-        <title>{title}</title>
+        {title && <title>{title}</title>}
+        {description && <meta name="description" content={description} />}
         <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico" />
-        <link
-          href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700"
-          rel="stylesheet"
-          type="text/css"
-        />
-        <script
-          // eslint-disable-next-line react/no-danger
-          dangerouslySetInnerHTML={{
-            __html: `
-              var i = new Image();
-              i.onload = i.onerror = function () {
-                document.body.classList.add(i.height == 1 ? 'webp' : 'no-webp');
-              };
-              i.src = 'data:image/webp;base64,UklGRhoAAABXRUJQVlA4TA0AAAAvAAAAEAcQERGIiP4HAA==';
-            `,
-          }}
-        />
       </Head>
-      <div id="header">
+      <header>
         <div className="container">
           <div id="nav">
             <h3>
@@ -59,17 +44,17 @@ const Layout: React.FunctionComponent<Props> = function ({ children, title = 'De
             </ul>
           </div>
         </div>
-      </div>
-      <div id="main">
+      </header>
+      <main>
         <div className="container">
           <div className="page">{children}</div>
         </div>
-      </div>
-      <div id="footer">
+      </main>
+      <footer>
         <div className="container">
           <p>© {getCurrentYear()} Rob Graeber. All rights reserved.</p>
         </div>
-      </div>
+      </footer>
 
       <style jsx>
         {`
@@ -80,8 +65,7 @@ const Layout: React.FunctionComponent<Props> = function ({ children, title = 'De
             width: 78em;
           }
 
-          #header {
-            background-color: #000;
+          header {
             background-color: rgba(0, 0, 0, 0.7);
             box-sizing: border-box;
             color: #fff;
@@ -90,26 +74,25 @@ const Layout: React.FunctionComponent<Props> = function ({ children, title = 'De
             position: relative;
             text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.65);
           }
-          #header h3 {
+          header h3 {
             float: left;
             font-size: 2.66em;
           }
-          #header ul {
+          header ul {
             float: right;
             font-size: 1.9em;
             line-height: 1em;
             margin-top: 0.1em;
           }
-          #header li {
+          header li {
             display: inline-block;
             vertical-align: middle;
           }
-          #header li + li {
+          header li + li {
             margin-left: 1em;
           }
 
-          #footer {
-            background-color: #000;
+          footer {
             background-color: rgba(0, 0, 0, 0.7);
             bottom: 0;
             box-sizing: border-box;
@@ -120,25 +103,25 @@ const Layout: React.FunctionComponent<Props> = function ({ children, title = 'De
             text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.65);
             width: 100%;
           }
-          #footer p {
+          footer p {
             font-size: 1.33em;
           }
 
-          #main {
+          main {
             color: #333;
             padding: 7em 0 16em;
           }
         `}
       </style>
-
       <style jsx global>
         {`
           html {
             height: 100%;
           }
           body {
-            background-color: #000;
-            font-family: roboto, arial, sans-serif;
+            background: #000 url(${require('public/img/background.jpg')}) no-repeat center top;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Oxygen', 'Ubuntu',
+              'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
             font-size: 12px;
             font-weight: 300;
             min-height: 100%;
@@ -147,17 +130,20 @@ const Layout: React.FunctionComponent<Props> = function ({ children, title = 'De
             text-align: center;
             text-size-adjust: 100%;
           }
-          body.webp {
-            background: #000 url(${require('public/img/background.jpg?webp')}) no-repeat center top;
-          }
-          body.no-webp {
-            background: #000 url(${require('public/img/background.jpg')}) no-repeat center top;
-          }
+
+          /* Reset some styles */
           a {
             display: inline-block;
             text-decoration: none;
             color: inherit;
           }
+          button {
+            border: 0;
+          }
+        `}
+      </style>
+      <style jsx global>
+        {`
           .page {
             background-color: rgb(234, 238, 246);
             box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
@@ -193,7 +179,7 @@ const Layout: React.FunctionComponent<Props> = function ({ children, title = 'De
             margin-bottom: 0.75em;
           }
           .page h2 {
-            font-size: 1.73em;
+            font-size: 1.75em;
             line-height: 1.3em;
             margin-bottom: 0.7em;
           }

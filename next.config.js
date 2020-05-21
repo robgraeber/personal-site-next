@@ -1,6 +1,15 @@
-const withOptimizedImages = require('next-optimized-images');
+const withPlugins = require('next-compose-plugins');
+const optimizedImages = require('next-optimized-images');
+const sourceMaps = require('@zeit/next-source-maps');
 
-module.exports = withOptimizedImages({
-  // config for other plugins or other next.js configs here
-  poweredByHeader: false,
-});
+module.exports = withPlugins(
+  [
+    [optimizedImages],
+    [sourceMaps, { devtool: 'hidden-source-map' }],
+    // other plugins go here
+  ],
+  {
+    poweredByHeader: false,
+    // other next.js configs go here
+  }
+);
