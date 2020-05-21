@@ -1,2 +1,13 @@
-node_modules
-.next
+###OSX###
+
+.DS_Store
+.keys
+
+npm-debug.log
+
+/tmp
+/.next
+/.idea
+/.vscode
+/node_modules
+/target
