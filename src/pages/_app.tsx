@@ -6,7 +6,10 @@
 import 'reset-css/reset.css';
 import { DefaultSeo } from 'next-seo';
 import Head from 'next/head';
-import MainLayout from './components/MainLayout';
+import { useEffect } from 'react';
+import { initGA, logPageView } from 'src/utils/Analytics';
+import Router from 'next/router';
+import MainLayout from '../components/MainLayout';
 
 interface AppParams {
   Component: any;
@@ -15,6 +18,11 @@ interface AppParams {
 
 // This default export is required in a new `pages/_app.tsx` file.
 export default function MyApp({ Component, pageProps }: AppParams) {
+  useEffect(() => {
+    initGA();
+    logPageView();
+    Router.events.on('routeChangeComplete', logPageView);
+  }, []);
   return (
     <>
       <Head>
