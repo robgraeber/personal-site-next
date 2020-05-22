@@ -11,7 +11,7 @@ function getCurrentYear(): number {
   return new Date().getFullYear();
 }
 
-const Layout: React.FunctionComponent<Props> = function ({ children, title, description }) {
+const MainLayout: React.FunctionComponent<Props> = function ({ children, title, description }) {
   return (
     <>
       <Head>
@@ -64,7 +64,6 @@ const Layout: React.FunctionComponent<Props> = function ({ children, title, desc
             padding: 0 1.66em;
             width: 78em;
           }
-
           header {
             background-color: rgba(0, 0, 0, 0.7);
             box-sizing: border-box;
@@ -237,4 +236,4 @@ const Layout: React.FunctionComponent<Props> = function ({ children, title, desc
   );
 };
 
-export default Layout;
+export default MainLayout;

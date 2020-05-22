@@ -1,8 +1,9 @@
 import React from 'react';
-import Layout from './components/Layout';
+import { NextSeo } from 'next-seo';
 
 const AboutPage = () => (
-  <Layout title="About | Rob Graeber">
+  <>
+    <NextSeo title="Rob Graeber | About" />
     <div className="contents">
       <h1>About Rob Graeber</h1>
       <p>
@@ -12,9 +13,8 @@ const AboutPage = () => (
         franchises, Rob Graeber’s games have received <b>over 500 million plays</b> and received
         countless awards. Developing games since a very young age, Rob Graeber incorporated{' '}
         <a href="http://www.effinggames.com">Effing Games</a> in 2011. Rob Graeber has developed
-        over 12 original titles,
-        <b>grossing over $300k</b> while still in college. Ultimately, Rob Graeber was awarded a
-        Bachelors of Science; Environmental Economics from{' '}
+        over 12 original titles, <b>grossing over $300k</b> while still in college. Ultimately, Rob
+        Graeber was awarded a Bachelors of Science in Environmental Economics from{' '}
         <a href="https://en.wikipedia.org/wiki/University_of_California,_Berkeley">UC Berkeley</a>{' '}
         in 2012.
       </p>
@@ -28,13 +28,12 @@ const AboutPage = () => (
         skills and work with interesting people. Eventually Rob took a position with{' '}
         <a href="https://www.rallyhealth.com/">Rally Health</a> where he learned to work in a lean
         startup environment and led frontend development on{' '}
-        <a href="https://werally.com/">werally.com</a> until their acquistion at a{' '}
+        <a href="https://werally.com/">Werally.com</a> until their acquistion at a{' '}
         <b>$4 Billion valuation</b>. After that Rob took a position at{' '}
         <a href="https://www.linkedin.com/">LinkedIn</a> where he was in charge of the reporting
         frontend and broadened his experience working in large organizations.
       </p>
     </div>
-
     <style jsx>
       {`
         .pageImage {
@@ -42,7 +41,7 @@ const AboutPage = () => (
         }
       `}
     </style>
-  </Layout>
+  </>
 );
 
 export default AboutPage;

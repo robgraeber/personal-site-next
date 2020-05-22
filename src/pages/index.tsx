@@ -1,11 +1,12 @@
 import Link from 'next/link';
-import Layout from './components/Layout';
+import { NextSeo } from 'next-seo';
 
 const IndexPage = () => (
-  <Layout
-    title="Rob Graeber | Official Website"
-    description="Rob Graeber is a San Francisco-based software engineer, entrepreneur, and creator of awesome iPhone games like Effing Worms, Stick Blender, and more."
-  >
+  <>
+    <NextSeo
+      title="Rob Graeber | Official Website"
+      description="Rob Graeber is a San Francisco-based software engineer, entrepreneur, and creator of awesome iPhone games like Effing Worms, Stick Blender, and more."
+    />
     <div className="contents">
       <span className="pageImage">
         <picture>
@@ -25,7 +26,6 @@ const IndexPage = () => (
         <a className="ctaBtn">Contact Me</a>
       </Link>
     </div>
-
     <style jsx>
       {`
         h2 {
@@ -33,7 +33,7 @@ const IndexPage = () => (
         }
       `}
     </style>
-  </Layout>
+  </>
 );
 
 export default IndexPage;

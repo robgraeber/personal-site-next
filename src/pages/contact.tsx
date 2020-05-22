@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Layout from './components/Layout';
+import { NextSeo } from 'next-seo';
 
 const ContactPage = () => {
   const [statusText, setStatusText] = useState('');
@@ -39,7 +39,8 @@ const ContactPage = () => {
   }
 
   return (
-    <Layout title="Contact | Rob Graeber">
+    <>
+      <NextSeo title="Rob Graeber | Contact" />
       <div className="contents">
         <h1>Contact Me</h1>
         <p className="description">
@@ -102,7 +103,7 @@ const ContactPage = () => {
           }
         `}
       </style>
-    </Layout>
+    </>
   );
 };
 

@@ -1,9 +1,11 @@
 /**
- * Global _app.tsx file which manages all the global imports
+ * Global _app.tsx file which manages all the global imports and layouts
  */
 
 // Imports css to reset all elements to standardized styles.
 import '../../node_modules/reset-css/reset.css';
+import { DefaultSeo } from 'next-seo';
+import MainLayout from './components/MainLayout';
 
 interface AppParams {
   Component: any;
@@ -12,6 +14,10 @@ interface AppParams {
 
 // This default export is required in a new `pages/_app.tsx` file.
 export default function MyApp({ Component, pageProps }: AppParams) {
-  // eslint-disable-next-line react/jsx-props-no-spreading
-  return <Component {...pageProps} />;
+  return (
+    <MainLayout>
+      <Component {...pageProps} />
+      <DefaultSeo title="Rob Graeber" />
+    </MainLayout>
+  );
 }
