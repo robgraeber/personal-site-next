@@ -80,7 +80,7 @@ const ContactPage = () => {
             required
           />
           <div>
-            <button className="ctaBtn" type="submit">
+            <button className="cta-btn" type="submit">
               Submit
             </button>{' '}
             <span className="statusText">{statusText}</span>

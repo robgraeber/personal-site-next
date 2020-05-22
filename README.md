@@ -1,6 +1,6 @@
 # personal-site-next
 
-Personal landing page using React and Next.js.
+Personal landing page using React, Next.js, and Typescript. Production ready with image minification, responsive, and using Sass styled jsx.
 
 ### Usage:
 

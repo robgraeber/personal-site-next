@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { NextSeo } from 'next-seo';
+import { MOBILE_BREAKPOINT } from 'src/Constants';
 
 const IndexPage = () => (
   <>
@@ -8,28 +9,49 @@ const IndexPage = () => (
       description="Rob Graeber is a San Francisco-based software engineer, entrepreneur, and creator of awesome iPhone games like Effing Worms, Stick Blender, and more."
     />
     <div className="contents">
-      <span className="pageImage">
+      <span className="page-image">
         <picture>
-          <source srcSet={require('public/img/profile.png?webp')} type="image/webp" />
-          <source srcSet={require('public/img/profile.png')} type="image/jpeg" />
-          <img src={require('public/img/profile.png')} alt="" />
+          <source
+            srcSet={`${require('public/img/profile-v2.jpg?webp')}, ${require('public/img/profile-v2@2x.jpg?webp')} 2x`}
+            type="image/webp"
+          />
+          <source
+            srcSet={`${require('public/img/profile-v2.jpg')}, ${require('public/img/profile-v2@2x.jpg')} 2x`}
+            type="image/jpeg"
+          />
+          <img src={require('public/img/profile-v2.jpg')} alt="" width="225" height="205" />
         </picture>
       </span>
       <h1>Rob Graeber</h1>
       <h2>
-        Currently: Software Engineer @ <a href="https://about.linkedin.com/">LinkedIn</a>
+        <span className="mobile-block">Currently: </span>
+        Software Engineer @ <a href="https://about.linkedin.com/">LinkedIn</a>
       </h2>
       <h2>
-        Formerly: Founder/Developer @ <a href="http://www.effinggames.com">Effing Games</a>
+        <span className="mobile-block">Formerly: </span>
+        Founder/Developer @ <a href="http://www.effinggames.com">Effing Games</a>
       </h2>
-      <Link href="/contact">
-        <a className="ctaBtn">Contact Me</a>
-      </Link>
+      <div>
+        <Link href="/contact">
+          <a className="cta-btn">Contact Me</a>
+        </Link>
+      </div>
     </div>
     <style jsx>
       {`
         h2 {
-          margin-top: 0.15em;
+          margin-top: 5px;
+        }
+
+        @media only screen and (max-width: ${MOBILE_BREAKPOINT}) {
+          /* For mobile phones: */
+          h1,
+          h2 {
+            display: block;
+          }
+          h1 {
+            margin-top: 20px;
+          }
         }
       `}
     </style>

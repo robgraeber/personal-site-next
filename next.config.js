@@ -4,7 +4,14 @@ const sourceMaps = require('@zeit/next-source-maps');
 
 module.exports = withPlugins(
   [
-    [optimizedImages],
+    [
+      optimizedImages,
+      {
+        webp: {
+          quality: 85,
+        },
+      },
+    ],
     [sourceMaps, { devtool: 'hidden-source-map' }],
     // other plugins go here
   ],

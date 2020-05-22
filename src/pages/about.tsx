@@ -3,11 +3,11 @@ import { NextSeo } from 'next-seo';
 
 const AboutPage = () => (
   <>
-    <NextSeo title="Rob Graeber | About" />
     <div className="contents">
+      <NextSeo title="Rob Graeber | About" />
       <h1>About Rob Graeber</h1>
       <p>
-        Rob Graeber is a software engineer and badass game developer. World renown for his
+        Rob Graeber is a leading software engineer and badass game developer. World renown for his
         industry-leading <a href="http://www.effinggames.com/play/effing-worms-2">Effing Worms</a>{' '}
         and <a href="http://www.effinggames.com/play/stick-figure-badminton-2">Stick Badminton</a>{' '}
         franchises, Rob Graeber’s games have received <b>over 500 million plays</b> and received
@@ -28,16 +28,16 @@ const AboutPage = () => (
         skills and work with interesting people. Eventually Rob took a position with{' '}
         <a href="https://www.rallyhealth.com/">Rally Health</a> where he learned to work in a lean
         startup environment and led frontend development on{' '}
-        <a href="https://werally.com/">Werally.com</a> until their acquistion at a{' '}
+        <a href="https://werally.com/">werally.com</a> until their acquistion at a{' '}
         <b>$4 Billion valuation</b>. After that Rob took a position at{' '}
-        <a href="https://www.linkedin.com/">LinkedIn</a> where he was in charge of the reporting
+        <a href="https://www.linkedin.com/">LinkedIn</a> where he was in charge of their reporting
         frontend and broadened his experience working in large organizations.
       </p>
     </div>
     <style jsx>
       {`
-        .pageImage {
-          margin-right: 2.2em;
+        .page-image {
+          margin-right: 25px;
         }
       `}
     </style>

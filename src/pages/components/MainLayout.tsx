@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Link from 'next/link';
-import Head from 'next/head';
+import { MOBILE_BREAKPOINT } from 'src/Constants';
 
 type Props = {
   title?: string;
@@ -11,19 +11,12 @@ function getCurrentYear(): number {
   return new Date().getFullYear();
 }
 
-const MainLayout: React.FunctionComponent<Props> = function ({ children, title, description }) {
+const MainLayout: React.FunctionComponent<Props> = function ({ children }) {
   return (
     <>
-      <Head>
-        {title && <title>{title}</title>}
-        {description && <meta name="description" content={description} />}
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico" />
-      </Head>
       <header>
         <div className="container">
-          <div id="nav">
+          <nav>
             <h3>
               <Link href="/">
                 <a>Rob Graeber</a>
@@ -42,7 +35,7 @@ const MainLayout: React.FunctionComponent<Props> = function ({ children, title, 
                 <a href="https://www.effinggames.com">Effing Games</a>
               </li>
             </ul>
-          </div>
+          </nav>
         </div>
       </header>
       <main>
@@ -58,37 +51,41 @@ const MainLayout: React.FunctionComponent<Props> = function ({ children, title, 
 
       <style jsx>
         {`
-          .container {
-            box-sizing: border-box;
-            margin: 0 auto;
-            padding: 0 1.66em;
-            width: 78em;
-          }
           header {
             background-color: rgba(0, 0, 0, 0.7);
             box-sizing: border-box;
             color: #fff;
-            height: 9.66em;
-            padding-top: 3.8em;
+            min-height: 115px;
+            padding: 45px 0 20px;
             position: relative;
             text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.65);
+            overflow: hidden;
           }
           header h3 {
-            float: left;
             font-size: 2.66em;
+            margin-bottom: 20px;
+            margin-right: 10px;
+            display: inline-block;
           }
           header ul {
             float: right;
             font-size: 1.9em;
             line-height: 1em;
-            margin-top: 0.1em;
+            margin-top: 4px;
           }
           header li {
             display: inline-block;
-            vertical-align: middle;
+            margin-right: 1em;
           }
-          header li + li {
-            margin-left: 1em;
+          header li:last-of-type {
+            margin-right: 0;
+          }
+
+          .container {
+            box-sizing: border-box;
+            margin: 0 auto;
+            padding: 0 40px;
+            max-width: 940px;
           }
 
           footer {
@@ -96,9 +93,10 @@ const MainLayout: React.FunctionComponent<Props> = function ({ children, title, 
             bottom: 0;
             box-sizing: border-box;
             color: #fff;
-            height: 7.08em;
-            padding-top: 3em;
+            min-height: 85px;
+            padding-top: 36px;
             position: absolute;
+            text-align: center;
             text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.65);
             width: 100%;
           }
@@ -108,7 +106,30 @@ const MainLayout: React.FunctionComponent<Props> = function ({ children, title, 
 
           main {
             color: #333;
-            padding: 7em 0 16em;
+            padding: 84px 0 192px;
+          }
+
+          @media only screen and (max-width: ${MOBILE_BREAKPOINT}) {
+            /* For mobile phones: */
+            main {
+              padding: 20px 0 150px;
+            }
+
+            header {
+              padding-top: 30px;
+            }
+
+            header ul {
+              float: none;
+            }
+
+            .container {
+              padding: 0 20px;
+            }
+
+            header li:first-of-type {
+              margin-bottom: 10px;
+            }
           }
         `}
       </style>
@@ -119,14 +140,12 @@ const MainLayout: React.FunctionComponent<Props> = function ({ children, title, 
           }
           body {
             background: #000 url(${require('public/img/background.jpg')}) no-repeat center top;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Oxygen', 'Ubuntu',
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
               'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
             font-size: 12px;
             font-weight: 300;
             min-height: 100%;
-            min-width: 78em;
             position: relative;
-            text-align: center;
             text-size-adjust: 100%;
           }
 
@@ -138,6 +157,13 @@ const MainLayout: React.FunctionComponent<Props> = function ({ children, title, 
           }
           button {
             border: 0;
+            outline: none;
+          }
+          /* Smartphones (portrait) ----------- */
+          @media only screen and (max-width: 320px) {
+            body {
+              font-size: 10px;
+            }
           }
         `}
       </style>
@@ -148,87 +174,109 @@ const MainLayout: React.FunctionComponent<Props> = function ({ children, title, 
             box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
             box-sizing: border-box;
             display: inline-block;
-            padding: 3em 3.5em 3.17em;
+            padding: 35px 38px 40px;
             text-align: left;
             width: 100%;
+            .page-image {
+              display: inline-block;
+              float: left;
+              margin-right: 42px;
+              img {
+                box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.05);
+                border: 1px solid #3c6265;
+                display: block;
+                height: auto;
+                max-width: 100%;
+              }
+            }
+            .contents {
+              display: inline-block;
+              text-align: left;
+              vertical-align: top;
+              width: 100%;
+            }
+            h1 {
+              display: inline-block;
+              font-size: 2.66em;
+              font-weight: 400;
+              line-height: 1.2em;
+              margin-bottom: 24px;
+            }
+            h2 {
+              font-size: 1.75em;
+              line-height: 1.3em;
+              margin-bottom: 15px;
+            }
+            h4 {
+              font-size: 1.3em;
+              line-height: 1em;
+              margin-bottom: 5px;
+            }
+            textarea {
+              border: 1px solid #cccccc;
+              font-size: 1.15em;
+              font-weight: 400;
+              padding: 4px;
+              box-sizing: border-box;
+              width: 100%;
+              max-width: 276px;
+              margin-bottom: 12px;
+            }
+            input {
+              border: 1px solid #cccccc;
+              font-size: 1.15em;
+              font-weight: 400;
+              padding: 4px;
+              box-sizing: border-box;
+              width: 100%;
+              max-width: 276px;
+              margin-bottom: 12px;
+              height: 28px;
+            }
+            p {
+              font-size: 1.4em;
+              margin-bottom: 17px;
+              line-height: 1.3em;
+              &:last-child {
+                margin: 0;
+              }
+            }
+            a {
+              font-weight: 400;
+              text-decoration: underline;
+            }
+            b {
+              font-weight: 400;
+            }
           }
-          .page .pageImage {
-            background-color: #01060f;
-            display: inline-block;
-            float: left;
-            margin-right: 3.5em;
-          }
-          .page .pageImage img {
-            box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.05);
-            border: 1px solid #3c6265;
-            display: block;
-            min-height: 16.66em;
-            width: 18.75em;
-          }
-          .page .contents {
-            display: inline-block;
-            text-align: left;
-            vertical-align: top;
-            width: 100%;
-          }
-          .page h1 {
-            font-size: 2.66em;
-            font-weight: 400;
-            line-height: 1em;
-            margin-bottom: 0.75em;
-          }
-          .page h2 {
-            font-size: 1.75em;
-            line-height: 1.3em;
-            margin-bottom: 0.7em;
-          }
-          .page h4 {
-            font-size: 1.3em;
-            line-height: 1em;
-            margin-bottom: 0.4em;
-          }
-          .page textarea,
-          .page input {
-            border: 1px solid #cccccc;
-            font-size: 1.15em;
-            font-weight: 400;
-            padding: 0.3em;
-            width: 20em;
-            margin-bottom: 0.9em;
-          }
-          .page input {
-            height: 2em;
-          }
-          .page p {
-            font-size: 1.4em;
-            margin-bottom: 1em;
-            line-height: 1.3em;
-          }
-          .page p:last-child {
-            margin: 0;
-          }
-          .page a {
-            font-weight: 400;
-            text-decoration: underline;
-          }
-          .page b {
-            font-weight: 400;
-          }
-          .ctaBtn {
+          .cta-btn {
             background-color: #00cc66;
             border-radius: 3px;
             box-shadow: 0 1px 1px rgba(0, 0, 0, 0.68);
             color: #f5f8ff;
             font-size: 1.33em;
             font-weight: 400;
-            padding: 0.7em 0.8em;
+            padding: 12px;
             margin-top: 1em;
             text-decoration: none !important;
+            &:active {
+              box-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+              position: relative;
+              top: 1px;
+            }
           }
-          .ctaBtn:active {
-            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
-            position: relative;
-            top: 1px;
+
+          @media only screen and (max-width: ${MOBILE_BREAKPOINT}) {
+            /* For mobile phones: */
+            .page .page-image {
+              float: none;
+              background-color: initial;
+              width: 100%;
+            }
+
+            .mobile-block {
+              display: block;
+            }
           }
         `}
       </style>
