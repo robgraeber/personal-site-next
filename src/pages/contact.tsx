@@ -50,6 +50,7 @@ const ContactPage = () => {
         <form name="contactForm" onSubmit={sendEmail}>
           <h4>Your Name</h4>
           <input
+            className="mobile-full-width"
             value={nameInput}
             onChange={(e) => setNameInput(e.target.value)}
             type="text"
@@ -58,6 +59,7 @@ const ContactPage = () => {
           />
           <h4>Your Email</h4>
           <input
+            className="mobile-full-width"
             value={emailInput}
             onChange={(e) => setEmailInput(e.target.value)}
             type="email"
@@ -66,6 +68,7 @@ const ContactPage = () => {
           />
           <h4>Subject</h4>
           <input
+            className="mobile-full-width"
             value={subjectInput}
             onChange={(e) => setSubjectInput(e.target.value)}
             type="text"
@@ -74,13 +77,14 @@ const ContactPage = () => {
           />
           <h4>Message</h4>
           <textarea
+            className="mobile-full-width"
             value={messageInput}
             onChange={(e) => setMessageInput(e.target.value)}
             rows={10}
             required
           />
           <div>
-            <button className="cta-btn" type="submit">
+            <button className="cta-btn mobile-full-width" type="submit">
               Submit
             </button>{' '}
             <span className="statusText">{statusText}</span>
@@ -92,6 +96,25 @@ const ContactPage = () => {
         {`
           h2 {
             margin-bottom: 0.6em;
+          }
+          textarea {
+            border: 1px solid #cccccc;
+            font-size: 1.15em;
+            font-weight: 400;
+            padding: 4px;
+            box-sizing: border-box;
+            width: 300px;
+            margin-bottom: 12px;
+          }
+          input {
+            border: 1px solid #cccccc;
+            font-size: 1.15em;
+            font-weight: 400;
+            padding: 4px;
+            box-sizing: border-box;
+            width: 300px;
+            margin-bottom: 12px;
+            height: 28px;
           }
           .description {
             font-size: 1.12em;

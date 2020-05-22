@@ -13,6 +13,7 @@ npm start
 Env variables:  
 `CONTACT_EMAIL`: Email to send contact form messages.  
 `SENDGRID_API_KEY`: Sendgrid api key to send contact form emails.  
+`NEXT_PUBLIC_GOOGLE_ANALYTICS_ID`: Google Analytics tracking id.  
 `PORT`: Sets the port the server listens on. <Defaults to 3000>
 
 NPM Tasks:  

@@ -70,8 +70,10 @@ const MainLayout: React.FunctionComponent<Props> = function ({ children }) {
           header ul {
             float: right;
             font-size: 1.9em;
-            line-height: 1em;
+            line-height: 1.2em;
             margin-top: 4px;
+            white-space: nowrap;
+            overflow: auto;
           }
           header li {
             display: inline-block;
@@ -85,6 +87,8 @@ const MainLayout: React.FunctionComponent<Props> = function ({ children }) {
             box-sizing: border-box;
             margin: 0 auto;
             padding: 0 40px;
+            padding-left: calc(40px + env(safe-area-inset-left));
+            padding-right: calc(40px + env(safe-area-inset-right));
             max-width: 940px;
           }
 
@@ -135,6 +139,8 @@ const MainLayout: React.FunctionComponent<Props> = function ({ children }) {
       </style>
       <style jsx global>
         {`
+          @import './node_modules/reset-css/sass/reset';
+
           html {
             height: 100%;
           }
@@ -159,47 +165,25 @@ const MainLayout: React.FunctionComponent<Props> = function ({ children }) {
             border: 0;
             outline: none;
           }
-          /* Smartphones (portrait) ----------- */
           @media only screen and (max-width: 320px) {
+            /* Smartphones (portrait) ----------- */
             body {
               font-size: 10px;
             }
           }
-        `}
-      </style>
-      <style jsx global>
-        {`
+
           .page {
             background-color: rgb(234, 238, 246);
             box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
             box-sizing: border-box;
             display: inline-block;
-            padding: 35px 38px 40px;
+            padding: 35px;
             text-align: left;
             width: 100%;
-            .page-image {
-              display: inline-block;
-              float: left;
-              margin-right: 42px;
-              img {
-                box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.05);
-                border: 1px solid #3c6265;
-                display: block;
-                height: auto;
-                max-width: 100%;
-              }
-            }
-            .contents {
-              display: inline-block;
-              text-align: left;
-              vertical-align: top;
-              width: 100%;
-            }
             h1 {
               display: inline-block;
               font-size: 2.66em;
               font-weight: 400;
-              line-height: 1.2em;
               margin-bottom: 24px;
             }
             h2 {
@@ -209,29 +193,7 @@ const MainLayout: React.FunctionComponent<Props> = function ({ children }) {
             }
             h4 {
               font-size: 1.3em;
-              line-height: 1em;
               margin-bottom: 5px;
-            }
-            textarea {
-              border: 1px solid #cccccc;
-              font-size: 1.15em;
-              font-weight: 400;
-              padding: 4px;
-              box-sizing: border-box;
-              width: 100%;
-              max-width: 276px;
-              margin-bottom: 12px;
-            }
-            input {
-              border: 1px solid #cccccc;
-              font-size: 1.15em;
-              font-weight: 400;
-              padding: 4px;
-              box-sizing: border-box;
-              width: 100%;
-              max-width: 276px;
-              margin-bottom: 12px;
-              height: 28px;
             }
             p {
               font-size: 1.4em;
@@ -249,6 +211,7 @@ const MainLayout: React.FunctionComponent<Props> = function ({ children }) {
               font-weight: 400;
             }
           }
+
           .cta-btn {
             background-color: #00cc66;
             border-radius: 3px;
@@ -256,8 +219,8 @@ const MainLayout: React.FunctionComponent<Props> = function ({ children }) {
             color: #f5f8ff;
             font-size: 1.33em;
             font-weight: 400;
-            padding: 12px;
-            margin-top: 1em;
+            padding: 12px 14px;
+            margin-top: 16px;
             text-decoration: none !important;
             &:active {
               box-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
@@ -265,17 +228,16 @@ const MainLayout: React.FunctionComponent<Props> = function ({ children }) {
               top: 1px;
             }
           }
+          .inline-block {
+            display: inline-block;
+          }
 
           @media only screen and (max-width: ${MOBILE_BREAKPOINT}) {
-            /* For mobile phones: */
-            .page .page-image {
-              float: none;
-              background-color: initial;
-              width: 100%;
-            }
-
-            .mobile-block {
-              display: block;
+            .mobile-full-width {
+              // Workaround to increase specificity
+              &#{&} {
+                width: 100%;
+              }
             }
           }
         `}

@@ -16,6 +16,9 @@ RUN npm install pm2 -g
 # Bundle app source
 COPY . .
 
+ARG NEXT_PUBLIC_GOOGLE_ANALYTICS_ID
+ENV NEXT_TELEMETRY_DISABLED=1
+
 RUN npm run build
 
 EXPOSE 80

@@ -34,13 +34,6 @@ const AboutPage = () => (
         frontend and broadened his experience working in large organizations.
       </p>
     </div>
-    <style jsx>
-      {`
-        .page-image {
-          margin-right: 25px;
-        }
-      `}
-    </style>
   </>
 );
 

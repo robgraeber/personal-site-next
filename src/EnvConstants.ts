@@ -1,3 +1,5 @@
+// Env variables that are used in the API.
+// Pages won't have access to them.
 export const SENDGRID_API_KEY = process.env.SENDGRID_API_KEY || 'missing_api_key';
 export const CONTACT_EMAIL = process.env.CONTACT_EMAIL || 'foo@example.com';
 
