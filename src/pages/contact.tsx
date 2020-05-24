@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { NextSeo } from 'next-seo';
+import { MOBILE_BREAKPOINT } from 'src/Constants';
 
 const ContactPage = () => {
   const [statusText, setStatusText] = useState('');
@@ -8,34 +9,38 @@ const ContactPage = () => {
   const [subjectInput, setSubjectInput] = useState('');
   const [messageInput, setMessageInput] = useState('');
 
-  function sendEmail(event: React.FormEvent<HTMLFormElement>): void {
+  async function sendEmail(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setStatusText('Submitting message..');
 
-    fetch('/api/sendEmail', {
-      method: 'post',
-      body: JSON.stringify({
-        senderName: nameInput,
-        email: emailInput,
-        subject: subjectInput,
-        message: messageInput,
-      }),
-    })
-      .then((rsp) => Promise.all([rsp.status, rsp.json()]))
-      .then(([status, body]) => {
-        if (status === 200) {
-          [setNameInput, setEmailInput, setSubjectInput, setMessageInput].forEach((setInput) =>
-            setInput('')
-          );
-
-          setStatusText(body.results);
-        } else {
-          throw new Error('Failed Request');
-        }
-      })
-      .catch(() => {
-        setStatusText('An error occurred!');
+    try {
+      const rsp = await fetch('/api/sendEmail', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          senderName: nameInput,
+          email: emailInput,
+          subject: subjectInput,
+          message: messageInput,
+        }),
       });
+      const { results } = await rsp.json();
+
+      if (rsp.status === 200) {
+        [setNameInput, setEmailInput, setSubjectInput, setMessageInput].forEach((setInput) =>
+          setInput('')
+        );
+
+        setStatusText(results);
+      } else {
+        throw new Error('Failed Request');
+      }
+    } catch {
+      setStatusText('An error occurred!');
+    }
   }
 
   return (
@@ -47,7 +52,7 @@ const ContactPage = () => {
           For all partnership inquiries, fan mail, and etc. I regularly check my email and will get
           back to you soon!
         </p>
-        <form name="contactForm" onSubmit={sendEmail}>
+        <form onSubmit={sendEmail}>
           <h4>Your Name</h4>
           <input
             className="mobile-full-width"
@@ -87,7 +92,7 @@ const ContactPage = () => {
             <button className="cta-btn mobile-full-width" type="submit">
               Submit
             </button>{' '}
-            <span className="statusText">{statusText}</span>
+            <span className="status-text">{statusText}</span>
           </div>
         </form>
       </div>
@@ -120,9 +125,17 @@ const ContactPage = () => {
             font-size: 1.12em;
             margin-bottom: 1.4em;
           }
-          .statusText {
+          .status-text {
             font-size: 1.1em;
             margin-left: 0.9em;
+          }
+
+          @media only screen and (max-width: ${MOBILE_BREAKPOINT}) {
+            .status-text {
+              margin: 15px 0 0 0;
+              text-align: center;
+              display: block;
+            }
           }
         `}
       </style>

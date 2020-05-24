@@ -10,6 +10,8 @@ module.exports = withPlugins(
         webp: {
           quality: 85,
         },
+        handleImages: ['jpeg', 'png', 'svg', 'webp', 'gif', 'ico'],
+        imagesFolder: 'chunks/images',
       },
     ],
     [sourceMaps, { devtool: 'hidden-source-map' }],

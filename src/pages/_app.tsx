@@ -6,9 +6,9 @@
 import { DefaultSeo } from 'next-seo';
 import Head from 'next/head';
 import { useEffect } from 'react';
-import { initGA, logPageView } from 'src/utils/Analytics';
+import { initGA, logPageView } from 'src/utils/AnalyticsHelper';
 import Router from 'next/router';
-import MainLayout from '../components/MainLayout';
+import MainLayout from 'src/components/MainLayout';
 
 interface AppParams {
   Component: any;
@@ -27,7 +27,11 @@ export default function MyApp({ Component, pageProps }: AppParams) {
       <Head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-        <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico" />
+        <link
+          rel="shortcut icon"
+          type="image/x-icon"
+          href={`${require('public/img/favicon.ico')}`}
+        />
       </Head>
       <DefaultSeo title="Rob Graeber" />
       <MainLayout>

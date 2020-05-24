@@ -1,6 +1,6 @@
-import { NextApiRequest, NextApiResponse } from 'next';
+import { Request, Response } from 'express';
 import sgMail from '@sendgrid/mail';
-import { SENDGRID_API_KEY, CONTACT_EMAIL } from '../../EnvConstants';
+import { SENDGRID_API_KEY, CONTACT_EMAIL } from '../EnvConstants';
 
 sgMail.setApiKey(SENDGRID_API_KEY);
 
@@ -14,19 +14,10 @@ Message: ${message}
 This mail is sent via contact form on Rob Graeber http://www.robgraeber.com`;
 }
 
-const emailSendError = {
-  status: 'ERROR',
-  results: 'An error occurred!',
-};
-
-export default async function (req: NextApiRequest, res: NextApiResponse) {
-  if (req.method !== 'POST') {
-    return;
-  }
-
+export async function sendEmail(req: Request, res: Response) {
   console.log('Attempting to send mail:');
 
-  const { senderName, email, subject, message } = JSON.parse(req.body);
+  const { senderName, email, subject, message } = req.body;
 
   if (senderName && email && subject && message) {
     console.log('Request valid, sending email');
@@ -40,16 +31,25 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
       });
 
       console.log('Email sent successfully!');
+
       res.status(200).json({
         status: 'OK',
         results: 'Message successfully sent. Thanks!',
       });
     } catch (err) {
       console.log('Err:', err);
-      res.status(500).json(emailSendError);
+
+      res.status(500).json({
+        status: 'ERROR',
+        results: 'An error occurred!',
+      });
     }
   } else {
     console.log('Err: Missing fields -', req.body);
-    res.status(500).json(emailSendError);
+
+    res.status(422).json({
+      status: 'ERROR',
+      results: 'An error occurred!',
+    });
   }
 }
