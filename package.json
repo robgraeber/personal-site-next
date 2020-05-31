@@ -2,7 +2,7 @@
   "name": "personal-site-next",
   "version": "1.0.0",
   "scripts": {
-    "dev": "NODE_OPTIONS='--inspect' nodemon",
+    "dev": "nodemon",
     "build": "next build && tsc --project tsconfig.server.json",
     "start": "NODE_ENV=production node dist/Main.js",
     "test": "tsc --noEmit --project tsconfig.json && tsc --noEmit --project tsconfig.server.json"
@@ -13,7 +13,8 @@
     "express": "^4.17.1",
     "helmet": "^3.22.0",
     "morgan": "^1.10.0",
-    "next": "latest",
+    "next": "^9.4.4",
+    "next-fonts": "^1.1.0",
     "next-seo": "^4.5.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
@@ -68,7 +69,7 @@
     "watch": [
       "server"
     ],
-    "exec": "ts-node --project tsconfig.server.json server/Main.ts",
+    "exec": "NODE_OPTIONS='--inspect' ts-node --project tsconfig.server.json server/Main.ts",
     "ext": "js ts"
   },
   "husky": {

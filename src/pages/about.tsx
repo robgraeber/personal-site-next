@@ -12,9 +12,9 @@ const AboutPage = () => (
         and <a href="http://www.effinggames.com/play/stick-figure-badminton-2">Stick Badminton</a>{' '}
         franchises, Rob Graeber’s games have received <b>over 500 million plays</b> and received
         countless awards. Developing games since a very young age, Rob Graeber incorporated{' '}
-        <a href="http://www.effinggames.com">Effing Games</a> in 2011. Rob Graeber has developed
-        over 12 original titles, <b>grossing over $300k</b> while still in college. Ultimately, Rob
-        Graeber was awarded a Bachelors of Science in Environmental Economics from{' '}
+        <a href="http://www.effinggames.com">Effing Games</a> in 2011. Rob Graeber has since
+        developed over 12 original titles, <b>grossing over $300k</b> while still in college.
+        Ultimately, Rob Graeber was awarded a Bachelors of Science in Environmental Economics from{' '}
         <a href="https://en.wikipedia.org/wiki/University_of_California,_Berkeley">UC Berkeley</a>{' '}
         in 2012.
       </p>

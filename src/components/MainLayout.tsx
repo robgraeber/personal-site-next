@@ -110,7 +110,7 @@ const MainLayout: React.FunctionComponent<Props> = function ({ children }) {
 
           main {
             color: #333;
-            padding: 84px 0 192px;
+            padding: 54px 0 192px;
           }
 
           @media only screen and (max-width: ${MOBILE_BREAKPOINT}) {
@@ -141,21 +141,7 @@ const MainLayout: React.FunctionComponent<Props> = function ({ children }) {
         {`
           @import './node_modules/reset-css/sass/reset';
 
-          html {
-            height: 100%;
-          }
-          body {
-            background: #000 url(${require('public/img/background.jpg')}) no-repeat center top;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
-              'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-            font-size: 12px;
-            font-weight: 300;
-            min-height: 100%;
-            position: relative;
-            text-size-adjust: 100%;
-          }
-
-          /* Reset some styles */
+          /* Reset some additional styles */
           a {
             display: inline-block;
             text-decoration: none;
@@ -165,8 +151,56 @@ const MainLayout: React.FunctionComponent<Props> = function ({ children }) {
             border: 0;
             outline: none;
           }
+          /* Fonts from https://google-webfonts-helper.herokuapp.com/fonts/roboto */
+          /* Removed local() from sources */
+          /* roboto-300 - latin */
+          @font-face {
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: 300;
+            src: url(${require('public/fonts/roboto-v20-latin-300.woff2')}) format('woff2'),
+              url(${require('public/fonts/roboto-v20-latin-300.woff')}) format('woff');
+          }
+          /* roboto-regular - latin */
+          @font-face {
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: 400;
+            src: url(${require('public/fonts/roboto-v20-latin-regular.woff2')}) format('woff2'),
+              url(${require('public/fonts/roboto-v20-latin-regular.woff')}) format('woff');
+          }
+          /* roboto-500 - latin */
+          @font-face {
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: 500;
+            src: url(${require('public/fonts/roboto-v20-latin-500.woff2')}) format('woff2'),
+              url(${require('public/fonts/roboto-v20-latin-500.woff')}) format('woff');
+          }
+          /* roboto-700 - latin */
+          @font-face {
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: 700;
+            src: url(${require('public/fonts/roboto-v20-latin-700.woff2')}) format('woff2'),
+              url(${require('public/fonts/roboto-v20-latin-700.woff')}) format('woff');
+          }
+
+          html {
+            height: 100%;
+          }
+          body {
+            background: #000 url(${require('public/img/background.jpg')}) no-repeat center top;
+            font-family: 'Roboto', 'Arial', sans-serif;
+            font-size: 12px;
+            font-weight: 300;
+            min-height: 100%;
+            position: relative;
+            text-size-adjust: 100%;
+          }
+
           @media only screen and (max-width: 320px) {
-            /* Smartphones (portrait) ----------- */
+            /* Smartphones (portrait) */
             body {
               font-size: 10px;
             }
