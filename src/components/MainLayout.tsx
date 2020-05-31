@@ -110,7 +110,7 @@ const MainLayout: React.FunctionComponent<Props> = function ({ children }) {
 
           main {
             color: #333;
-            padding: 84px 0 192px;
+            padding: 54px 0 192px;
           }
 
           @media only screen and (max-width: ${MOBILE_BREAKPOINT}) {
@@ -141,18 +141,66 @@ const MainLayout: React.FunctionComponent<Props> = function ({ children }) {
         {`
           @import './node_modules/reset-css/sass/reset';
 
+          /* Fonts from https://google-webfonts-helper.herokuapp.com/fonts/roboto */
+          /* roboto-300 - latin */
+          @font-face {
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: 300;
+            src: local('Roboto Light'), local('Roboto-Light'),
+              url('/fonts/roboto-v20-latin-300.woff2') format('woff2'),
+              /* Chrome 26+, Opera 23+, Firefox 39+ */ url('/fonts/roboto-v20-latin-300.woff')
+                format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+          }
+          /* roboto-regular - latin */
+          @font-face {
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: 400;
+            src: local('Roboto'), local('Roboto-Regular'),
+              url('/fonts/roboto-v20-latin-regular.woff2') format('woff2'),
+              /* Chrome 26+, Opera 23+, Firefox 39+ */ url('/fonts/roboto-v20-latin-regular.woff')
+                format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+          }
+          /* roboto-500 - latin */
+          @font-face {
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: 500;
+            src: local('Roboto Medium'), local('Roboto-Medium'),
+              url('/fonts/roboto-v20-latin-500.woff2') format('woff2'),
+              /* Chrome 26+, Opera 23+, Firefox 39+ */ url('/fonts/roboto-v20-latin-500.woff')
+                format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+          }
+          /* roboto-700 - latin */
+          @font-face {
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: 700;
+            src: local('Roboto Bold'), local('Roboto-Bold'),
+              url('/fonts/roboto-v20-latin-700.woff2') format('woff2'),
+              /* Chrome 26+, Opera 23+, Firefox 39+ */ url('/fonts/roboto-v20-latin-700.woff')
+                format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+          }
+
           html {
             height: 100%;
           }
           body {
             background: #000 url(${require('public/img/background.jpg')}) no-repeat center top;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
-              'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+            font-family: Roboto, Arial, sans-serif;
             font-size: 12px;
             font-weight: 300;
             min-height: 100%;
             position: relative;
             text-size-adjust: 100%;
+          }
+
+          @media only screen and (max-width: 320px) {
+            /* Smartphones (portrait) */
+            body {
+              font-size: 10px;
+            }
           }
 
           /* Reset some styles */
@@ -164,12 +212,6 @@ const MainLayout: React.FunctionComponent<Props> = function ({ children }) {
           button {
             border: 0;
             outline: none;
-          }
-          @media only screen and (max-width: 320px) {
-            /* Smartphones (portrait) ----------- */
-            body {
-              font-size: 10px;
-            }
           }
 
           .page {
