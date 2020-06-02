@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Link from 'next/link';
-import { MOBILE_BREAKPOINT } from 'src/Constants';
+import { MOBILE_BREAKPOINT, MOBILE_BREAKPOINT_PLUS_ONE } from 'src/Constants';
 
 type Props = {
   title?: string;
@@ -226,7 +226,7 @@ const MainLayout: React.FunctionComponent<Props> = function ({ children }) {
             height: 100%;
           }
           body {
-            background: #111 url(${require('public/img/background.jpg')}) no-repeat center top;
+            background: #000;
             font-family: 'Roboto', 'Arial', sans-serif;
             font-size: 12px;
             font-weight: 300;
@@ -235,6 +235,11 @@ const MainLayout: React.FunctionComponent<Props> = function ({ children }) {
             text-size-adjust: 100%;
           }
 
+          @media only screen and (min-width: ${MOBILE_BREAKPOINT_PLUS_ONE}) {
+            body {
+              background: #000 url(${require('public/img/background.jpg')}) no-repeat center top;
+            }
+          }
           @media only screen and (max-width: ${MOBILE_BREAKPOINT}) {
             body {
               font-size: 11px;
@@ -254,7 +259,7 @@ const MainLayout: React.FunctionComponent<Props> = function ({ children }) {
             display: inline-block;
             padding: 35px;
             text-align: left;
-            font-family: 'Source Serif Pro';
+            font-family: 'Source Serif Pro', Georgia, serif;
             font-weight: 400;
             width: 100%;
             h1 {
