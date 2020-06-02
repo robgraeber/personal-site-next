@@ -122,7 +122,7 @@ const ContactPage = () => {
             height: 28px;
           }
           .description {
-            font-size: 1.12em;
+            font-size: 1.4em;
             margin-bottom: 1.4em;
           }
           .status-text {

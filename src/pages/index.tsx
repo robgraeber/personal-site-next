@@ -49,10 +49,12 @@ const IndexPage = () => (
     </div>
     <style jsx>
       {`
+        h1 {
+          margin-top: 4px;
+        }
         h2 {
           margin-top: 5px;
         }
-
         .current-title {
           padding-right: 64px;
         }
