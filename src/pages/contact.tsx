@@ -102,9 +102,13 @@ const ContactPage = () => {
           h2 {
             margin-bottom: 0.6em;
           }
+          h4 {
+            font-size: 1.4em;
+            margin-bottom: 5px;
+          }
           textarea {
             border: 1px solid #cccccc;
-            font-size: 1.15em;
+            font-size: 1.25em;
             font-weight: 400;
             padding: 4px;
             box-sizing: border-box;
@@ -113,28 +117,42 @@ const ContactPage = () => {
           }
           input {
             border: 1px solid #cccccc;
-            font-size: 1.15em;
+            font-size: 1.25em;
             font-weight: 400;
             padding: 4px;
             box-sizing: border-box;
             width: 300px;
             margin-bottom: 12px;
-            height: 28px;
+            height: 31px;
           }
           .description {
-            font-size: 1.12em;
+            font-size: 1.4em;
             margin-bottom: 1.4em;
           }
           .status-text {
-            font-size: 1.1em;
+            font-size: 1.35em;
             margin-left: 0.9em;
           }
 
           @media only screen and (max-width: ${MOBILE_BREAKPOINT}) {
             .status-text {
-              margin: 15px 0 0 0;
+              margin: 20px 0 0 0;
+              font-size: 1.5em;
               text-align: center;
               display: block;
+            }
+            .description {
+              font-size: 1.5em;
+            }
+            h4 {
+              font-size: 1.5em;
+            }
+            input,
+            textarea {
+              font-size: 16px;
+            }
+            input {
+              height: 34px;
             }
           }
         `}

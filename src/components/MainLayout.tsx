@@ -116,23 +116,31 @@ const MainLayout: React.FunctionComponent<Props> = function ({ children }) {
           @media only screen and (max-width: ${MOBILE_BREAKPOINT}) {
             /* For mobile phones: */
             main {
-              padding: 20px 0 150px;
+              padding: 0;
+
+              .container {
+                padding: 0;
+              }
             }
 
             header {
               padding-top: 30px;
+
+              li:first-of-type {
+                margin-bottom: 10px;
+              }
             }
 
             header ul {
               float: none;
             }
 
-            .container {
-              padding: 0 20px;
+            footer {
+              position: static;
             }
 
-            header li:first-of-type {
-              margin-bottom: 10px;
+            .container {
+              padding: 0 20px;
             }
           }
         `}
@@ -185,13 +193,41 @@ const MainLayout: React.FunctionComponent<Props> = function ({ children }) {
             src: url(${require('public/fonts/roboto-v20-latin-700.woff2')}) format('woff2'),
               url(${require('public/fonts/roboto-v20-latin-700.woff')}) format('woff');
           }
+          /* source-serif-pro-regular - latin */
+          @font-face {
+            font-family: 'Source Serif Pro';
+            font-style: normal;
+            font-weight: 400;
+            src: local('Source Serif Pro'), local('SourceSerifPro-Regular'),
+              url(${require('public/fonts/source-serif-pro-v7-latin-regular.woff2')})
+                format('woff2'),
+              url(${require('public/fonts/source-serif-pro-v7-latin-regular.woff')}) format('woff');
+          }
+          /* source-serif-pro-700 - latin */
+          @font-face {
+            font-family: 'Source Serif Pro';
+            font-style: normal;
+            font-weight: 700;
+            src: local('Source Serif Pro Bold'), local('SourceSerifPro-Bold'),
+              url(${require('public/fonts/source-serif-pro-v7-latin-700.woff2')}) format('woff2'),
+              url(${require('public/fonts/source-serif-pro-v7-latin-700.woff')}) format('woff');
+          }
+          /* source-serif-pro-600 - latin */
+          @font-face {
+            font-family: 'Source Serif Pro';
+            font-style: normal;
+            font-weight: 600;
+            src: local('Source Serif Pro Semibold'), local('SourceSerifPro-Semibold'),
+              url(${require('public/fonts/source-serif-pro-v7-latin-600.woff2')}) format('woff2'),
+              url(${require('public/fonts/source-serif-pro-v7-latin-600.woff')}) format('woff');
+          }
 
           html {
             height: 100%;
           }
           body {
             background: #000 url(${require('public/img/background.jpg')}) no-repeat center top;
-            font-family: 'Roboto', 'Arial', sans-serif;
+            font-family: Roboto, Arial, sans-serif;
             font-size: 12px;
             font-weight: 300;
             min-height: 100%;
@@ -199,6 +235,12 @@ const MainLayout: React.FunctionComponent<Props> = function ({ children }) {
             text-size-adjust: 100%;
           }
 
+          @media only screen and (max-width: ${MOBILE_BREAKPOINT}) {
+            body {
+              background: #000;
+              font-size: 11.5px;
+            }
+          }
           @media only screen and (max-width: 320px) {
             /* Smartphones (portrait) */
             body {
@@ -213,53 +255,54 @@ const MainLayout: React.FunctionComponent<Props> = function ({ children }) {
             display: inline-block;
             padding: 35px;
             text-align: left;
+            font-family: 'Source Serif Pro', Georgia, serif;
+            font-weight: 400;
             width: 100%;
             h1 {
               display: inline-block;
               font-size: 2.66em;
-              font-weight: 400;
-              margin-bottom: 24px;
+              line-height: 1.3em;
+              margin-bottom: 22px;
+            }
+            h1::first-line {
+              line-height: 1em;
             }
             h2 {
               font-size: 1.75em;
               line-height: 1.3em;
               margin-bottom: 15px;
             }
-            h4 {
-              font-size: 1.3em;
-              margin-bottom: 5px;
-            }
             p {
-              font-size: 1.4em;
-              margin-bottom: 17px;
-              line-height: 1.3em;
+              font-size: 1.5em;
+              margin-bottom: 1em;
+              line-height: 1.5em;
               &:last-child {
                 margin: 0;
               }
             }
             a {
-              font-weight: 400;
+              font-weight: 700;
               text-decoration: underline;
             }
             b {
-              font-weight: 400;
+              font-weight: 700;
             }
-          }
-
-          .cta-btn {
-            background-color: #00cc66;
-            border-radius: 3px;
-            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.68);
-            color: #f5f8ff;
-            font-size: 1.33em;
-            font-weight: 400;
-            padding: 12px 14px;
-            margin-top: 16px;
-            text-decoration: none !important;
-            &:active {
-              box-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
-              position: relative;
-              top: 1px;
+            .cta-btn {
+              background-color: #00cc66;
+              border-radius: 3px;
+              box-shadow: 0 1px 1px rgba(0, 0, 0, 0.68);
+              color: #f5f8ff;
+              font-size: 1.33em;
+              font-weight: 400;
+              font-family: Roboto, Arial, sans-serif;
+              padding: 12px 14px;
+              margin-top: 16px;
+              text-decoration: none !important;
+              &:active {
+                box-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+                position: relative;
+                top: 1px;
+              }
             }
           }
           .inline-block {
@@ -271,6 +314,13 @@ const MainLayout: React.FunctionComponent<Props> = function ({ children }) {
               // Workaround to increase specificity
               &#{&} {
                 width: 100%;
+              }
+            }
+            .page {
+              padding: 30px 20px;
+              p {
+                line-height: 1.6em;
+                font-size: 1.54em;
               }
             }
           }

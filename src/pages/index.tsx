@@ -30,14 +30,20 @@ const IndexPage = () => (
           <span className="responsive-block">Currently: </span>
           Software Engineer{' '}
           <span className="inline-block">
-            @ <a href="https://about.linkedin.com/">LinkedIn</a>
+            @{' '}
+            <a className="job-title" href="https://about.linkedin.com/">
+              LinkedIn
+            </a>
           </span>
         </h2>
         <h2>
           <span className="responsive-block">Formerly: </span>
           Founder / Developer{' '}
           <span className="inline-block">
-            @ <a href="http://www.effinggames.com">Effing Games</a>
+            @{' '}
+            <a className="job-title" href="http://www.effinggames.com">
+              Effing Games
+            </a>
           </span>
         </h2>
         <div>
@@ -49,10 +55,15 @@ const IndexPage = () => (
     </div>
     <style jsx>
       {`
+        h1 {
+          margin-top: 4px;
+        }
         h2 {
           margin-top: 5px;
         }
-
+        .job-title {
+          font-weight: 600;
+        }
         .current-title {
           padding-right: 64px;
         }
@@ -67,6 +78,7 @@ const IndexPage = () => (
           flex-basis: 227px;
           position: relative;
           .image-wrapper {
+            background: rgba(0, 0, 0, 0.03);
             position: relative;
             height: 0;
             box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.05);
@@ -99,7 +111,7 @@ const IndexPage = () => (
           .page-image {
             margin-right: 0;
             flex-basis: 0;
-            max-width: 280px;
+            max-width: 300px;
             left: 50%;
             transform: translateX(-50%);
           }

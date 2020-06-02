@@ -1,1 +1,1 @@
-export const MOBILE_BREAKPOINT = '700px';
+export const MOBILE_BREAKPOINT = '600px';
