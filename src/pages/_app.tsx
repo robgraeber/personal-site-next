@@ -2,7 +2,6 @@
  * Global _app.tsx file which manages all the global imports and layouts
  */
 
-// Imports css to reset all elements to standardized styles.
 import { DefaultSeo } from 'next-seo';
 import Head from 'next/head';
 import { useEffect } from 'react';

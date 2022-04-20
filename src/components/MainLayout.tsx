@@ -3,8 +3,7 @@ import Link from 'next/link';
 import { MOBILE_BREAKPOINT } from 'src/Constants';
 
 type Props = {
-  title?: string;
-  description?: string;
+  children: JSX.Element;
 };
 
 function getCurrentYear(): number {

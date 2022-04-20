@@ -12,15 +12,9 @@ const IndexPage = () => (
       <div className="page-image">
         <div className="image-wrapper">
           <picture>
-            <source
-              srcSet={`${require('public/img/profile-v2.jpg?webp')}, ${require('public/img/profile-v2@2x.jpg?webp')} 2x`}
-              type="image/webp"
-            />
-            <source
-              srcSet={`${require('public/img/profile-v2.jpg')}, ${require('public/img/profile-v2@2x.jpg')} 2x`}
-              type="image/jpeg"
-            />
-            <img src={require('public/img/profile-v2.jpg')} alt="" />
+            <source srcSet={`${require('public/img/profile-v3.jpg?webp')}`} type="image/webp" />
+            <source srcSet={`${require('public/img/profile-v3.jpg')}`} type="image/jpeg" />
+            <img src={require('public/img/profile-v3.jpg')} alt="" />
           </picture>
         </div>
       </div>
@@ -47,9 +41,9 @@ const IndexPage = () => (
           </span>
         </h2>
         <div>
-          <Link href="/contact">
-            <a className="cta-btn">Contact Me</a>
-          </Link>
+          <a href="https://www.linkedin.com/in/robgraeber/" className="cta-btn">
+            Contact Me
+          </a>
         </div>
       </div>
     </div>
@@ -84,7 +78,7 @@ const IndexPage = () => (
             box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.05);
             border: 1px solid #3c6265;
             // Use padding offset workaround for responsive image default sizing
-            padding-top: calc(#{205px / 225px * 100%} - 2px);
+            padding-top: calc(#{768px / 750px * 100%} - 2px);
             img {
               box-sizing: border-box;
               display: block;
@@ -97,6 +91,7 @@ const IndexPage = () => (
           }
         }
         .info-contents {
+          margin-top: 3px;
           flex-grow: 1;
         }
 
